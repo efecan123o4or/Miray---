@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miray</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      flex-direction: column; /* Vertical düzen */
+    }
+
+    h1 {
+      font-size: 5rem;
+      background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      color: transparent;
+      position: absolute;
+      top: 30%;
+      animation: rainbowText 5s infinite alternate;
+    }
+
+    @keyframes rainbowText {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatUp 6s infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Buton stili */
+    .playButton {
+      padding: 15px 30px;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px; /* Butonun alt kısma yerleşmesini sağlar */
+    }
+
+    .playButton:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <h1>Miray</h1>
+
+  <!-- Kalpler uçuyor -->
+  <script>
+    const hearts = ["🩷", "💖", "💝", "💞", "💕", "💓", "💗"];
+    for (let i = 0; i < 50; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <!-- Şarkıyı çalacak buton -->
+  <button class="playButton" onclick="playSong()">Şarkıyı Çal💖</button>
+
+  <!-- YouTube Video (otomatik olarak oynatılacak şekilde, arka planda) -->
+  <iframe id="audioFrame" width="0" height="0" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  <script>
+    // Şarkıyı çaldıran fonksiyon
+    function playSong() {
+      const iframe = document.getElementById("audioFrame");
+      // YouTube video ID'si: "Cc6l4tWGJ0o" (Toprak Yağmura - Ben Sana Aşık Oldum)
+      iframe.src = "https://www.youtube.com/embed/Cc6l4tWGJ0o?autoplay=1&mute=0&controls=0&showinfo=0";
+    }
+  </script>
+</body>
+</html>
